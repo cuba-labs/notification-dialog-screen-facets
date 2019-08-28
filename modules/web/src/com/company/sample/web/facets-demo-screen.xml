@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://caption"
+        messagesPack="com.company.sample.web">
+
+    <data>
+        <instance id="userDc"
+                  class="com.haulmont.cuba.security.entity.User"/>
+    </data>
+
+    <facets>
+        <notification id="notification"
+                      type="WARNING"
+                      caption="Test notification"
+                      description="Notification Facet Demo"
+                      delay="3000"
+                      position="TOP_CENTER"/>
+
+        <messageDialog id="messageDialog"
+                       caption="Test message"
+                       message="MessageDialog Facet Demo"/>
+
+        <optionDialog id="optionDialog"
+                      caption="Confirm something"
+                      message="OptionDialog Facet Demo">
+            <actions>
+                <action id="dialogOk" caption="OK" icon="OK" primary="true"/>
+                <action id="dialogCancel" caption="Cancel" icon="CANCEL"/>
+            </actions>
+        </optionDialog>
+
+        <screen id="testScreen"
+                screen="sample_TestScreen"
+                openMode="NEW_TAB">
+            <properties>
+                <property name="number" value="42"/>
+                <property name="truth" value="true"/>
+                <property name="text" value="Hello World!"/>
+
+                <property name="userInstance" ref="userDc"/>
+                <property name="label" ref="demoLabel"/>
+            </properties>
+        </screen>
+    </facets>
+    <layout expand="spacer" spacing="true">
+        <label id="demoLabel" value="Facets Demo"/>
+        <hbox spacing="true">
+            <button id="showNotification"
+                    caption="showNotification"/>
+            <button id="showMsgDialog"
+                    caption="Show Message Dialog"/>
+            <button id="showOptDialog"
+                    caption="Show Option Dialog"/>
+            <button id="showScreen"
+                    caption="Show TestScreen"/>
+        </hbox>
+        <label id="spacer"/>
+    </layout>
+</window>
