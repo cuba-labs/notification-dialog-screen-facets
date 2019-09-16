@@ -51,8 +51,12 @@ public class TestScreen extends Screen {
         addLabel("Passed number: " + number);
         addLabel("Passed boolean: " + truth);
         addLabel("Passed text: " + text);
-        addLabel("Demo label text: " + label.getValue());
-        addLabel("Container item: " + userInstance.getItem().getName());
+        if (label != null) {
+            addLabel("Demo label text: " + label.getValue());
+        }
+        if (userInstance != null) {
+            addLabel("Container item: " + userInstance.getItem().getName());
+        }
 
         Label spacer = addLabel("");
         getWindow().setExpandRatio(spacer, 1);

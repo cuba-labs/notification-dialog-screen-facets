@@ -1,0 +1,80 @@
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://declarativeFacetsDemo"
+        messagesPack="com.company.sample.web">
+
+    <data>
+        <collection id="usersDc"
+                    class="com.haulmont.cuba.security.entity.User"
+                    view="user.browse">
+            <loader>
+                <query>
+                    select u from sec$User u
+                </query>
+            </loader>
+        </collection>
+    </data>
+
+    <actions>
+        <action id="notificationAction"/>
+        <action id="messageDialogAction"/>
+        <action id="screenAction"/>
+    </actions>
+
+    <facets>
+        <notification id="notification"
+                      caption="Notification Facet"
+                      description="Declarative subscription demo"
+                      action="tt.ntfAction"/>
+
+        <messageDialog id="msgDialog"
+                       caption="MessageDialog"
+                       message="Declarative subscription demo"
+                       action="tt.dlgAction"/>
+
+        <screen id="testScreen"
+                screen="sample_TestScreen"
+                openMode="NEW_TAB"
+                action="tt.scrAction"/>
+    </facets>
+
+    <layout expand="tt" spacing="true">
+        <hbox spacing="true">
+            <button id="notificationButton"
+                    caption="Notification Demo"
+                    action="notificationAction"/>
+
+            <button id="messageDialogButton"
+                    caption="MessageDialog Demo"
+                    action="messageDialogAction"/>
+
+            <button id="screenButton"
+                    caption="Screen Demo"
+                    action="screenAction"/>
+        </hbox>
+
+        <table id="tt" width="100%" dataContainer="usersDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+
+                <action id="ntfAction"/>
+                <action id="dlgAction"/>
+                <action id="scrAction"/>
+            </actions>
+            <buttonsPanel>
+                <button action="tt.create"/>
+                <button action="tt.edit"/>
+                <button action="tt.remove"/>
+
+                <button action="tt.ntfAction" caption="Show Notification"/>
+                <button action="tt.dlgAction" caption="Show Dialog"/>
+                <button action="tt.scrAction" caption="Show Screen"/>
+            </buttonsPanel>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rows/>
+        </table>
+    </layout>
+</window>
