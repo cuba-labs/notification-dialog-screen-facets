@@ -15,13 +15,13 @@ import javax.inject.Inject;
 public class FacetsDemoScreen extends Screen {
 
     @Inject
-    protected Notification notification;
+    protected NotificationFacet notification;
 
     @Inject
-    protected MessageDialog messageDialog;
+    protected MessageDialogFacet messageDialog;
 
     @Inject
-    protected OptionDialog optionDialog;
+    protected OptionDialogFacet optionDialog;
 
     @Inject
     protected ScreenFacet<TestScreen> testScreen;
@@ -66,7 +66,7 @@ public class FacetsDemoScreen extends Screen {
     }
 
     @Install(subject = "actionHandler", to = "optionDialog.dialogOk")
-    private void onDialogOk(OptionDialog.DialogActionPerformedEvent evt) {
+    private void onDialogOk(OptionDialogFacet.DialogActionPerformedEvent evt) {
         notifications.create(Notifications.NotificationType.HUMANIZED)
                 .withCaption("Dialog Action Performed")
                 .withDescription("Action ID: " + evt.getDialogAction().getId())
@@ -74,7 +74,7 @@ public class FacetsDemoScreen extends Screen {
     }
 
     @Install(subject = "actionHandler", to = "optionDialog.dialogCancel")
-    private void onDialogCancel(OptionDialog.DialogActionPerformedEvent evt) {
+    private void onDialogCancel(OptionDialogFacet.DialogActionPerformedEvent evt) {
         notifications.create(Notifications.NotificationType.HUMANIZED)
                 .withCaption("Dialog Action Performed")
                 .withDescription("Action ID: " + evt.getDialogAction().getId())

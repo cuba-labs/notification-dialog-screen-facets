@@ -24,17 +24,17 @@
         <notification id="notification"
                       caption="Notification Facet"
                       description="Declarative subscription demo"
-                      action="tt.ntfAction"/>
+                      onAction="tt.ntfAction"/>
 
         <messageDialog id="msgDialog"
                        caption="MessageDialog"
                        message="Declarative subscription demo"
-                       action="tt.dlgAction"/>
+                       onAction="tt.dlgAction"/>
 
         <screen id="testScreen"
                 screen="sample_TestScreen"
                 openMode="NEW_TAB"
-                action="tt.scrAction"/>
+                onAction="tt.scrAction"/>
     </facets>
 
     <layout expand="tt" spacing="true">
